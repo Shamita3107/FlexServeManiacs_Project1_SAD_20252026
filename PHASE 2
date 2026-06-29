@@ -1,0 +1,130 @@
+# FlexServe AI Marketplace
+
+FlexServe is an AI-powered service booking platform that connects customers with service providers through a centralized, secure, and easy-to-use marketplace. It aims to replace ad-hoc booking workflows (social media, chat, phone) with a reliable system that supports real-time availability, online payments, reviews, and AI-driven recommendations and fraud detection.
+
+## Table of Contents
+- [Overview](#overview)
+- [Problem Statement](#problem-statement)
+- [Key Features](#key-features)
+- [AI Features](#ai-features)
+- [User Roles](#user-roles)
+- [Functional Requirements](#functional-requirements)
+- [Non-functional Requirements](#non-functional-requirements)
+- [Information Gathering & Requirement Analysis](#information-gathering--requirement-analysis)
+- [Suggested Architecture & Data Flow](#suggested-architecture--data-flow)
+- [Suggested Tech Stack](#suggested-tech-stack)
+- [Installation & Local Run (example)](#installation--local-run-example)
+- [Testing & QA](#testing--qa)
+- [Deployment & Operations](#deployment--operations)
+- [Contributing](#contributing)
+- [License & Contact](#license--contact)
+
+## Overview
+FlexServe simplifies discovery, comparison, and booking of services on a single platform. It provides provider listings, availability tracking, time-slot booking, online payments, reviews, and admin controls — enhanced with AI for smarter matching and fraud mitigation.
+
+## Problem Statement
+Many service bookings are handled manually via social media, messaging apps, or phone calls, causing miscommunication, double bookings, schedule management problems, and trust/security concerns. Users lack a centralized, intelligent platform that streamlines booking and decision-making.
+
+## Key Features
+- User registration & profile management (customers & providers)
+- Provider listings with detailed profiles and availability calendars
+- Time-slot based booking system with double-book prevention and buffer times
+- Online payments (full payment or deposit) and refund handling
+- Reviews and ratings system
+- Booking history and receipts
+- Admin dashboard for user, booking and transaction management
+- Reporting tools for platform activity and trends
+
+## AI Features
+- Smart Matching (mandatory): Recommends providers using user preferences (budget, service type, location, availability, past behavior) and learns from interactions to improve recommendations.
+- Fraud & Fake ID Detection: Detects suspicious booking patterns and inconsistent profile information to reduce scams and fake accounts.
+
+## User Roles
+- Customer: Search, filter, book, pay, review
+- Service Provider: Manage profile, availability, accept/reject bookings, view history
+- Admin: Approve providers, moderate content, manage disputes, run reports
+
+## Functional Requirements (summary)
+- Secure registration and authentication with role-based access control
+- Search & filters (service, price, rating, availability)
+- Booking engine (time-slot management, conflict prevention, reschedule/cancel)
+- Payment gateway integration (multiple methods), deposit/full payment workflows
+- Reviews & rating
+- Administrative controls and moderation
+- AI modules for recommendation and fraud detection
+
+## Non-functional Requirements
+- Performance: fast, responsive search & booking, concurrency-safe scheduling
+- Availability: high uptime with planned maintenance windows
+- Security: protect personal and payment data, fraud controls, secure authentication
+- Reliability: transactional integrity for bookings and payments, backups
+- Scalability: support growing users and bookings
+
+## Information Gathering & Requirement Analysis
+Requirements were gathered via stakeholder meetings (2 online, 1 face-to-face), questionnaires (Google Forms), and interviews. Users confirmed reliance on manual booking, concerns about scams and double-bookings, and positive reception to the proposed AI features and booking controls.
+
+## Suggested Architecture & Data Flow
+- Frontend: web or mobile clients (React / React Native / Vue)
+- Backend: RESTful or GraphQL API (Node/Express, Django, or similar)
+- Database: relational DB for users/bookings (Postgres/MySQL)
+- Payments: integrate with FPX, card processors, e-wallet providers
+- AI services: separate microservice(s) for Smart Matching and Fraud Detection (could use Python, TensorFlow/PyTorch or cloud ML services)
+- Admin dashboard and reporting
+- DFD / Context Diagram: produce Context Diagram → Level 0 → Child diagrams to model booking flows, payments, and AI interactions (not included here)
+
+## Suggested Tech Stack (example)
+- Frontend: React / Next.js or Vue
+- Backend: Node.js (Express) or Python (Django / FastAPI)
+- DB: PostgreSQL
+- Cache: Redis (for availability & session caching)
+- AI: Python services using scikit-learn / TensorFlow / PyTorch or cloud ML APIs
+- CI/CD: GitHub Actions
+- Hosting: Docker on cloud provider (AWS/GCP/Azure) or serverless where appropriate
+
+## Installation & Local Run (example)
+1. git clone <repo>
+2. cd flexserve
+3. cp .env.example .env && fill env values (DB, payment keys, ML endpoints)
+4. Backend:
+   - cd backend
+   - npm install (or pip install -r requirements.txt)
+   - run migrations
+   - npm run dev (or equivalent)
+5. Frontend:
+   - cd frontend
+   - npm install
+   - npm run dev
+6. Start AI microservices (if local)
+7. Visit http://localhost:3000
+
+(Replace steps with concrete commands once repository and stack are chosen.)
+
+## Testing & QA
+- Unit and integration tests for booking logic and payment flows
+- Load and concurrency testing for scheduling and search
+- Security testing for authentication and payment endpoints
+- ML model evaluation for recommendation and fraud detection (precision/recall, ROC)
+
+## Deployment & Operations
+- Use containerization (Docker) and orchestration (Kubernetes or managed services)
+- Ensure secure storage of secrets (vault, secrets manager)
+- Monitoring (Prometheus/Grafana), logging (ELK/managed), alerts for failures
+- Backup and disaster recovery for DB
+
+## Contributing
+- Follow repository CONTRIBUTING.md (code style, PR process, tests)
+- Use feature branches, include tests and documentation for new features
+- Run linters and test suite before opening PRs
+
+## Roadmap / Next Steps
+- Produce DFD diagrams (Context, Level 0, children)
+- Design database schema and API contracts
+- Implement core flows: registration, provider onboarding, booking engine, payment
+- Build and validate AI models with sample datasets
+- UX/UI design (Figma prototypes)
+
+## License
+Specify license (e.g., MIT) — add LICENSE file to repo.
+
+## Contact
+Project owner / team contact: (add email or GitHub username)
